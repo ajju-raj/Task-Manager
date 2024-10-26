@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: #f76c6c; /* Update body background if needed */
+}
+
+/* Other styles */
+
 
 body {
   margin: 0;
