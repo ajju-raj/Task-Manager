@@ -4,3 +4,12 @@ src/
 │   └── LoginPage.js
 ├── App.js
 └── index.css
+
+
+├── server
+    ├── models
+        └── User.js
+    ├── routes
+        └── auth.js
+    ├── .env
+    ├── server.js

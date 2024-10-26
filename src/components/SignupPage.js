@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const SignupPage = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const navigate = useNavigate(); // To redirect after signup
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/signup', { name, email, password });
+      const message = response.data.message || "Unexpected response from server"; // Add fallback
+      alert(message);
+    } catch (error) {
+      console.error("Signup Error:", error);
+      alert(error.response?.data?.message || "Signup failed. Please try again.");
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#ffe5e5]">
       <div className="bg-white p-12 rounded-xl shadow-lg w-96 md:w-[500px] mx-4">
         <h2 className="text-3xl font-bold mb-8 text-center text-[#f76c6c]">
           Create an Account
         </h2>
-        <form>
+        <form onSubmit={handleSignup}> {/* Added onSubmit to the form */}
           <div className="mb-6">
             <label className="block mb-3 text-lg text-gray-700" htmlFor="name">
               Name
@@ -18,6 +36,8 @@ const SignupPage = () => {
               id="name"
               className="border border-gray-300 p-3 w-full rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-[#f76c6c]"
               placeholder="Enter your name"
+              value={name} 
+              onChange={(e) => setName(e.target.value)} // Update state on input change
               required
             />
           </div>
@@ -31,6 +51,8 @@ const SignupPage = () => {
               id="email"
               className="border border-gray-300 p-3 w-full rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-[#f76c6c]"
               placeholder="Enter your email"
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} // Update state on input change
               required
             />
           </div>
@@ -44,6 +66,8 @@ const SignupPage = () => {
               id="password"
               className="border border-gray-300 p-3 w-full rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-[#f76c6c]"
               placeholder="Create a password"
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} // Update state on input change
               required
             />
           </div>
@@ -70,3 +94,6 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
+
+
+
