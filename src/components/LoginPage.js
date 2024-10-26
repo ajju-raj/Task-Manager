@@ -5,15 +5,15 @@ import axios from 'axios';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // To redirect after login
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       alert(response.data.message);
-      localStorage.setItem("token", response.data.token); // Store token
-      navigate('/home'); // Redirect to home page after successful login
+      localStorage.setItem("token", response.data.token);
+      navigate('/home');
     } catch (error) {
       alert(error.response.data.message);
     }
@@ -23,7 +23,7 @@ const LoginPage = () => {
     <div className="flex items-center justify-center min-h-screen bg-[#ffe5e5]">
       <div className="bg-white p-12 rounded-xl shadow-lg w-96 md:w-[500px] mx-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Login</h2>
-        <form onSubmit={handleLogin}> {/* Added onSubmit to the form */}
+        <form onSubmit={handleLogin}>
           <div className="mb-6">
             <label className="block mb-3 text-lg" htmlFor="email">Email:</label>
             <input 
@@ -31,7 +31,9 @@ const LoginPage = () => {
               type="email" 
               id="email" 
               value={email} 
-              onChange={(e) => setEmail(e.target.value)} // Update state on input change
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              placeholder="Enter your email"
               required 
             />
           </div>
@@ -42,7 +44,9 @@ const LoginPage = () => {
               type="password" 
               id="password" 
               value={password} 
-              onChange={(e) => setPassword(e.target.value)} // Update state on input change
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              placeholder="Enter your password"
               required 
             />
           </div>
