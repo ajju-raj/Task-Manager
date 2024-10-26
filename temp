@@ -6,10 +6,14 @@ src/
 └── index.css
 
 
-├── server
-    ├── models
-        └── User.js
-    ├── routes
-        └── auth.js
-    ├── .env
-    ├── server.js
+backend/
+  ├── config/
+  │   └── db.js
+  ├── models/
+  │   └── User.js
+  ├── routes/
+  │   └── auth.js
+  ├── middleware/
+  │   └── auth.js
+  ├── .env
+  └── server.js
