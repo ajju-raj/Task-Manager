@@ -17,3 +17,17 @@ backend/
   │   └── auth.js
   ├── .env
   └── server.js
+
+
+src
+├── components
+│   ├── TaskManager.js          // Reusable component to manage tasks (add, edit, delete)
+│   └── Navbar.js               // Navbar component to navigate between pages
+├── pages
+│   ├── GeneralTask.js          // Page for General Tasks
+│   ├── DailyTask.js            // Page for Daily Tasks
+│   ├── WeeklyTask.js           // Page for Weekly Tasks
+│   ├── MonthlyTask.js          // Page for Monthly Tasks
+│   └── YearlyTask.js           // Page for Yearly Tasks
+├── App.js                      // Main file with Routes for each task page
+└── index.js                    /
