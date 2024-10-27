@@ -6,6 +6,7 @@ import Home from './components/Home';
 import LoginPage from './components/LoginPage';
 import ForgotPasswordPage from './components/ForgotPasswordPage';
 import SignupPage from './components/SignupPage';
+import ContactUs from './components/ContactUs'; // Import the ContactUs component
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/signup" element={<SignupPage />} />
+            <Route path="/contactus" element={<ContactUs />} /> {/* ContactUs Route */}
           </Routes>
         </div>
         <Footer />
